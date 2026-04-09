@@ -1,0 +1,174 @@
+//@version=6
+strategy("H MOD Woodies CCI COMPLETE (v6 Optimized)", overlay=true, initial_capital=10000, default_qty_type=strategy.percent_of_equity, default_qty_value=10)
+
+// ==========================================
+// 🎨 Muted Design System (RAG Standard)
+// ==========================================
+var color DESERT_SAND    = #E3C4A8
+var color RUST_RED       = #B04A3E
+var color TERRA_COTTA    = #C66B4E
+var color CERULEAN_BLUE  = #4F94CD
+var color SAGE_GREEN     = #87AE73
+var color PINE_GREEN     = #2F4F4F
+var color GOLDENROD      = #DAA520
+var color AMBER          = #FFBF00
+var color STONE_GRAY     = #928E85
+
+// ==========================================
+// ⚙️ Input Parameters
+// ==========================================
+grp_main = "Main CCI Settings"
+source         = input.source(close, "Source Price", group=grp_main)
+avg            = input.source(hlc3, "Average Price (for Angle)", group=grp_main)
+cciTurboLength = input.int(6, "CCI Turbo Length", minval=3, maxval=14, group=grp_main)
+cci14Length    = input.int(14, "CCI 14 Length", minval=7, maxval=20, group=grp_main)
+
+grp_woodies = "Woodies Trend Components"
+lsmaLength      = input.int(25, "LSMA Length (SideWinder)", group=grp_woodies)
+ema34Length     = input.int(34, "EMA 34 Length (ChopZone)", group=grp_woodies)
+periods         = input.int(30, "Chopzone Calculation Periods", group=grp_woodies)
+swUpperThreshold = input.float(1.7453, "Upper SW Threshold", group=grp_woodies)
+swLowerThreshold = input.float(1.0471, "Lower SW Threshold", group=grp_woodies)
+
+grp_patterns = "Pattern Identification"
+peakDistance    = input.int(5, "Min bars between peaks", minval=2, group=grp_patterns)
+minPeakDiff     = input.float(5.0, "Min H&S Height Diff", group=grp_patterns)
+shoulderMaxDiff = input.float(15.0, "Max Symmetry Diff", group=grp_patterns)
+
+// ==========================================
+// 📊 Core Indicators
+// ==========================================
+cciTurbo = ta.cci(source, cciTurboLength)
+cci14    = ta.cci(source, cci14Length)
+lsma     = ta.linreg(source, lsmaLength, 0)
+ema34    = ta.ema(source, ema34Length)
+
+// ==========================================
+// 🌊 Woodies Trend Logic (SideWinder/ChopZone)
+// ==========================================
+
+// --- ChopZone Logic (Angle-based) ---
+highestHigh = ta.highest(high, periods)
+lowestLow   = ta.lowest(low, periods)
+rangeVal    = (highestHigh - lowestLow) == 0 ? 1 : 25 / (highestHigh - lowestLow) * lowestLow
+
+y2_ema34 = (ema34[1] - ema34) / avg * rangeVal
+c_ema34  = math.sqrt(1 + math.pow(y2_ema34, 2))
+emaAngle_1 = math.round(180 * math.acos(1 / c_ema34) / math.pi)
+emaAngle = y2_ema34 > 0 ? -emaAngle_1 : emaAngle_1
+
+color chopZoneColor = emaAngle >= 5 ? CERULEAN_BLUE : 
+   emaAngle >= 3.57 ? PINE_GREEN : 
+   emaAngle >= 2.14 ? SAGE_GREEN : 
+   emaAngle >= 0.71 ? SAGE_GREEN : 
+   emaAngle <= -5 ? RUST_RED : 
+   emaAngle <= -3.57 ? TERRA_COTTA : 
+   emaAngle <= -2.14 ? AMBER : 
+   emaAngle <= -0.71 ? GOLDENROD : 
+   DESERT_SAND
+
+// --- SideWinder Logic ---
+lsmaChange = ta.change(lsma)
+emaChange  = ta.change(ema34)
+sumSW      = math.abs(lsmaChange + emaChange)
+
+color swColor = sumSW > swUpperThreshold ? SAGE_GREEN : 
+   sumSW > swLowerThreshold ? RUST_RED : 
+   GOLDENROD
+
+// ==========================================
+// 🎯 Pattern Detection (v6 Vectorized)
+// ==========================================
+
+// Vectorized Peak Detection (Optimized)
+isPeak = ta.highestbars(cci14, peakDistance * 2 + 1) == -peakDistance
+isVal  = ta.lowestbars(cci14, peakDistance * 2 + 1) == -peakDistance
+
+// --- Woodies Zero Line Reject (ZLR) ---
+// Trend is up if CCI 14 stays above zero for 6 bars
+trendUp = ta.barssince(cci14 < 0) >= 6
+trendDn = ta.barssince(cci14 > 0) >= 6
+
+zlrLong = trendUp and cci14[1] < 100 and cci14[1] > 0 and cci14 > cci14[1] and ta.rising(cci14, 1) and cciTurbo > cci14
+zlrShort = trendDn and cci14[1] > -100 and cci14[1] < 0 and cci14 < cci14[1] and ta.falling(cci14, 1) and cciTurbo < cci14
+
+// --- Head and Shoulders (Refactored State Machine) ---
+var float leftShoulder = 0.0
+var float head = 0.0
+var float rightShoulder = 0.0
+
+if isPeak
+    float currentPeak = cci14[peakDistance]
+    if head == 0.0
+        if leftShoulder == 0.0
+            leftShoulder := currentPeak
+        else if currentPeak > leftShoulder
+            head := currentPeak
+    else if rightShoulder == 0.0
+        if currentPeak < head
+            rightShoulder := currentPeak
+
+// Pattern Confirmation
+hasHS = head > 0 and leftShoulder > 0 and rightShoulder > 0 and 
+   head > leftShoulder + minPeakDiff and 
+   head > rightShoulder + minPeakDiff and 
+   math.abs(leftShoulder - rightShoulder) <= shoulderMaxDiff
+
+// Reset Logic
+if hasHS or ta.change(bar_index) > 100
+    leftShoulder := 0.0
+    head := 0.0
+    rightShoulder := 0.0
+
+// ==========================================
+// 🚀 Strategy Execution
+// ==========================================
+
+// Entry Conditions
+longCondition = zlrLong or (hasHS and cci14 < 0) // Aggressive bottom fish on inverse H&S
+shortCondition = zlrShort or (hasHS and cci14 > 0)
+
+if longCondition
+    strategy.entry("Woodies Long", strategy.long, comment="ZLR/HS Long")
+
+if shortCondition
+    strategy.entry("Woodies Short", strategy.short, comment="ZLR/HS Short")
+
+// Exit on Zero Line Cross (Standard Woodies)
+if strategy.position_size > 0 and ta.crossunder(cci14, 0)
+    strategy.close("Woodies Long", comment="Z-Cross Exit")
+
+if strategy.position_size < 0 and ta.crossover(cci14, 0)
+    strategy.close("Woodies Short", comment="Z-Cross Exit")
+
+// ==========================================
+// 🎨 Visualizations
+// ==========================================
+
+// Zero Line
+hline(0, "Zero Line", color=STONE_GRAY, linewidth=2)
+hline(100, "Upper Boundary", color=STONE_GRAY, linestyle=hline.style_dotted)
+hline(-100, "Lower Boundary", color=STONE_GRAY, linestyle=hline.style_dotted)
+
+// CCI Area (Woodies Histogram)
+cciColor = cci14 > 0 ? (trendUp ? SAGE_GREEN : DESERT_SAND) : (trendDn ? RUST_RED : DESERT_SAND)
+plot(cci14, "CCI 14 Histogram", color=color.new(cciColor, 50), style=plot.style_columns)
+
+// CCI Lines
+plot(cciTurbo, "Turbo CCI", color=CERULEAN_BLUE, linewidth=1)
+plot(cci14, "Standard CCI", color=TERRA_COTTA, linewidth=3)
+
+// Status Bars (ChopZone & SideWinder)
+plot(110, "ChopZone Status", color=chopZoneColor, linewidth=5, style=plot.style_linebr)
+plot(-110, "SideWinder Status", color=swColor, linewidth=5, style=plot.style_linebr)
+
+// Pattern Highlights
+plotshape(zlrLong, title="ZLR Long Signal", style=shape.triangleup, location=location.belowbar, color=SAGE_GREEN, size=size.small)
+plotshape(zlrShort, title="ZLR Short Signal", style=shape.triangledown, location=location.abovebar, color=RUST_RED, size=size.small)
+bgcolor(hasHS ? color.new(color.purple, 85) : na, title="H&S Pattern Detection")
+
+// ==========================================
+// 🔔 Alerts
+// ==========================================
+if zlrLong or zlrShort
+    alert("Woodies ZLR Signal Detected!", alert.freq_once_per_bar_close)

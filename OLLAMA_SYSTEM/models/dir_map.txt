@@ -1,0 +1,205 @@
+Folder PATH listing for volume 4GBRed
+Volume serial number is 446C-3BB6
+D:.
+|   dir_map.txt
+|   microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K.gguf
+|   Modelfile
+|   Modelfile-deepseek
+|   Modelfile-Llama-3.1-Nemotron-Nano-8B-v1
+|   Modelfile-microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K
+|   Modelfile-phi-4-reasoning-vision-q3_k_s
+|   Modelfile-phi-4-reasoning-vision-q4_k_s
+|   Modelfile-qwen3
+|   phi-4-reasoning-vision-q3_k_s.gguf
+|   phi-4-reasoning-vision-q4_k_s.gguf
+|   phi-4-reasoning-vision-q4_k_s.Modelfile
+|   ruvltra-claude-code-Q4_K_M.gguf
+|   ruvltra-claude-code-Q4_K_M.Modelfile
+|   SANDBOX_POLICY.md
+|   
++---.ai-backups
+|       Modelfile-20260331.bak
+|       Modelfile-deepseek-20260331.bak
+|       Modelfile-Llama-3.1-Nemotron-Nano-8B-v1-20260331.bak
+|       Modelfile-microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K-20260331.bak
+|       Modelfile-phi-4-reasoning-vision-q3_k_s-20260331.bak
+|       Modelfile-phi-4-reasoning-vision-q4_k_s-20260331.bak
+|       Modelfile-phi-4-reasoning-vision-q4_k_s-root-20260331.bak
+|       Modelfile-qwen3-20260331.bak
+|       Modelfile-ruvltra-claude-code-Q4_K_M-20260331.bak
+|       
++---.cache
+|   \---huggingface
+|       |   .gitignore
+|       |   
+|       \---download
+|               ruvltra-claude-code-0.5b-q4_k_m.gguf.metadata
+|               
++---.trash
+|       Modelfile-20260331-removed.bak
+|       Modelfile-20260331-strictmove.bak
+|       Modelfile-deepseek-20260331-removed.bak
+|       Modelfile-deepseek-20260331-strictmove.bak
+|       Modelfile-Llama-3.1-Nemotron-Nano-8B-v1-20260331-removed.bak
+|       Modelfile-Llama-3.1-Nemotron-Nano-8B-v1-20260331-strictmove.bak
+|       Modelfile-microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K-20260331-removed.bak
+|       Modelfile-microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K-20260331-strictmove.bak
+|       Modelfile-phi-4-reasoning-vision-q3_k_s-20260331-removed.bak
+|       Modelfile-phi-4-reasoning-vision-q3_k_s-20260331-strictmove.bak
+|       Modelfile-phi-4-reasoning-vision-q4_k_s-20260331-removed.bak
+|       Modelfile-phi-4-reasoning-vision-q4_k_s-20260331-strictmove.bak
+|       Modelfile-qwen3-20260331-removed.bak
+|       Modelfile-qwen3-20260331-strictmove.bak
+|       phi-4-reasoning-vision-q4_k_s.Modelfile-20260331-removed.bak
+|       phi-4-reasoning-vision-q4_k_s.Modelfile-20260331-strictmove.bak
+|       
++---blobs
+|   |   sha256-1064e17101bdd2460dd5c4e03e4f5cc1b38a4dee66084dc91faba294ccb64a92
+|   |   sha256-1194192cf2a187eb02722edcc3f77b11d21f537048ce04b67ccf8ba78863006a
+|   |   sha256-170370233dd5c5415250a2ecd5c71586352850729062ccef1496385647293868
+|   |   sha256-1ccd7f5afbf8bebb95689713336dfec82bb3f997c82bc16f0717523832a76a94
+|   |   sha256-1da0581fd4ce92dcf5a66b1da737cf215d8dcf25aa1b98b44443aaf7173155f5
+|   |   sha256-1e237f779071c626b516704b12bbf74b50e6a60376c5d24e4b4129c4fac9c93b
+|   |   sha256-1ff5b64b61b9a63146475a24f70d3ca2fd6fdeec44247987163479968896fc0b
+|   |   sha256-23497904503c0d919ab82519fd2fe9485093dc2cdd0b9529dd3e6e9448dc4c71
+|   |   sha256-24a94682582c6045f4950846fc7711479dcecb478b86759f0306a2ef8484d318
+|   |   sha256-25e215d4283e3a48ca65a622b70a357599fd480282f48a3ecd6e3e8828d92a66
+|   |   sha256-2af71558e438db0b73a20beab92dc278a94e1bbe974c00c1a33e3ab62d53a608
+|   |   sha256-34bb5ab01051a11372a91f95f3fbbc51173eed8e7f13ec395b9ae9b8bd0e242b
+|   |   sha256-34ed3812a77d23f667b4dc1f63c7564df4ac4d02ff88cfba658debb8ca2b8059
+|   |   sha256-42bf393761a82b86377f74a69945838daad5f6801b070fb839edd930b0a35fea
+|   |   sha256-43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+|   |   sha256-432b8d797969ca87634a95662e89f2e10c9190d5f8ffc1d8691e7c31752bc2af
+|   |   sha256-4ac374ea0553f0b0c69421799750003e6d2206855fac1a001ff09edb5ccc21e1
+|   |   sha256-4af75e60fafb525d6c33792459362f26464a3c037428255951d2bc8326f4b4a6
+|   |   sha256-540b3b03e9948910dfff508d22e5a2e3d1a4282dac6dd6c22c3d8560e9d9ec64
+|   |   sha256-56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb
+|   |   sha256-66c7654fc5bb4185a372288c30f1981318a6ec65af16f580466ec13f6f573d0a
+|   |   sha256-69aa441ea44ff5e1e7b56cac4f471e71e8a5e2e3963c29684a9234d5d5e5f7aa
+|   |   sha256-6f94824552e0006f4d3756df3734dcd2adc245df630e62559e6f0ca365ef66b7
+|   |   sha256-72d6f08a42f656d36b356dbe0920675899a99ce21192fd66266fb7d82ed07539
+|   |   sha256-79dab8b830d83e5dff417e65cf9281ddeab5a91ed3de03fd16cd84cbb179af38
+|   |   sha256-7c658f9561e5dbbafb042a00f6a4de57877adddd957809111f3123e272632b4d
+|   |   sha256-966de95ca8a62200913e3f8bfbf84c8494536f1b94b49166851e76644e966396
+|   |   sha256-98d6c5f5a0e21d58e4a8e1d6a591eb4078f2b07c9a8e318aa37ae8c4b6d98675
+|   |   sha256-9d19a2f526ace127de39486ce15b12ed9dc5fd0aa903b4698670fb8913aa5287
+|   |   sha256-a00920c28dfd776d75b999418d3736291dad8f7cede46bd8301cf64738460d0e
+|   |   sha256-a3ebedbafd1cafbbd3527a9199a425ba5e3b79675709f01caba8b2f31d1eabec
+|   |   sha256-a70ff7e570d97baaf4e62ac6e6ad9975e04caa6d900d3742d37698494479e0cd
+|   |   sha256-aacf09a54b5a4ff323db71c4eb6809c84e17df7cddf4fb6fbfe1dcf4c9bce924
+|   |   sha256-afa0ae3294fbad4c6b60d110ae6e034b3dfdd5e0acf4d2f3eaa0b888633f7ffe
+|   |   sha256-b13e67dde94dd680b7efe2d3eae51a2c18459ce2bf4deb21535eb81f9b9eb5ed
+|   |   sha256-b78301c0df4d16b2d9ad21cc9448817c816e2efe94fc2ed072cb85b0928e4030
+|   |   sha256-c43332387573e98fdfad4a606171279955b53d891ba2500552c2984a6560ffb4
+|   |   sha256-c8f32ca7c6cd1309b821b5fe5d68b73c89422a88c283ccb115157062c006fdd6
+|   |   sha256-cf1cb311c68fc8476688fee5d9c09f691b723352dc4a755595e33bb3e838524d
+|   |   sha256-d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12
+|   |   sha256-d4e388894e09cf3816e8b0896d81d265b55e7a9fff9ab03fe8bf4ef5e11295ac
+|   |   sha256-db670dd7610f58ad2659633f5e07b539b640f6c61cd7bb60413ed3bd9f2d6bde
+|   |   sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff
+|   |   sha256-ed11eda7790d05b49395598a42b155812b17e263214292f7b87d15e14003d337
+|   |   sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f
+|   |   sha256-fcc5a6bec9daf9b561a68827b67ab6088e1dba9d1fa2a50d7bbcc8384e0a265d
+|   |   
+|   +---.bin
+|   |       node-which
+|   |       node-which.cmd
+|   |       node-which.ps1
+|   |       
+|   \---.cache
+|       \---huggingface
++---deepseek-coder-6.7b-instruct.Q6_K
+|       Modelfile
+|       
++---local-codellama-7b-instruct.Q2_K
+|       codellama-7b-instruct.Q2_K.gguf
+|       Modelfile
+|       
++---local-nomic-embed
+|       Modelfile
+|       
++---manifests
+|   +---hf.co
+|   |   \---ruv
+|   |       \---ruvltra-claude-code
+|   |               Q4_K_M
+|   |               
+|   \---registry.ollama.ai
+|       \---library
+|           +---deepseek-coder-6.7b-instruct.Q6_K
+|           |       latest
+|           |       
+|           +---glm-4.7
+|           |       cloud
+|           |       
+|           +---llama3.2
+|           |       3b
+|           |       
+|           +---llava
+|           |       latest
+|           |       
+|           +---local-nomic-embed
+|           |       latest
+|           |       
+|           +---microsoft.Phi-4-reasoning-vision-15B.f16.Q2_K
+|           |       latest
+|           |       
+|           +---mistral
+|           |       7b
+|           |       
+|           +---nemotron-nano-8b
+|           |       latest
+|           |       
+|           +---nemotron-nano-8b-q5_k_m
+|           |       latest
+|           |       
+|           +---nomic-embed-text-v1.5.Q4_K_M
+|           +---phi-4-reasoning-vision-15b-q2_k
+|           |       latest
+|           |       
+|           +---phi-4-reasoning-vision-q3_k_s
+|           |       latest
+|           |       
+|           +---phi-4-reasoning-vision-q4_k_s
+|           |       latest
+|           |       
+|           +---qwen-claude
+|           |       latest
+|           |       
+|           +---qwen-sysadmin
+|           |       latest
+|           |       
+|           +---qwen3-coder
+|           |       30b
+|           |       
+|           \---qwen3-embedding
+|                   latest
+|                   
++---microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K
+|       microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K.gguf
+|       
++---nemotron-nano-8b
+|       Modelfile
+|       
++---phi-4-reasoning-vision-15b-q2_k
+|       microsoft.Phi-4-reasoning-vision-15B.f16.gguf.Q2_K.gguf
+|       Modelfile
+|       
++---phi-4-reasoning-vision-q3_k_s
+|       Modelfile
+|       
++---phi-4-reasoning-vision-q4_k_s
+|       Modelfile
+|       
++---phi4_expert
+|       Modelfile
+|       
++---qwen3-embedding
+|       Modelfile
+|       
++---qwen3-gguf
+|       Modelfile
+|       qwen3.gguf
+|       
++---ruvltra-claude-code-Q4_K_M
+\---_root_models

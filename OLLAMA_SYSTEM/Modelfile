@@ -1,0 +1,12 @@
+# Start from the base Mistral model
+FROM mistral:latest
+
+# --- CONTEXT WINDOW ---
+# 12,288 (12k) is the 'Sweet Spot' for 12GB cards. 
+# It fits the 7B model + a large code file entirely in VRAM.
+PARAMETER num_ctx 12288
+
+# --- HARDWARE OPTIMIZATION ---
+# Force all 33 layers onto the NVIDIA GPU
+PARAMETER num_gpu 33
+PARAMETER temperature 0.1

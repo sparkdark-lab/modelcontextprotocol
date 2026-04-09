@@ -1,0 +1,140 @@
+{
+    "ollama_system": {
+        "version": "1.0",
+        "status": "active",
+        "last_updated": "2025-11-06T16:55:00Z",
+        "description": "Ollama System Configuration - Centralized Ollama Management"
+    },
+    "ollama_server": {
+        "url": "http://localhost:11434",
+        "host": "0.0.0.0",
+        "port": 11434,
+        "timeout": 120,
+        "auto_start": true,
+        "executable_path": "C:\\Users\\Hectojr\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+        "data_directory": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM",
+        "models_directory": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM\\models"
+    },
+    "gpu_configuration": {
+        "enabled": true,
+        "cuda_visible_devices": "0",
+        "num_gpu": 1,
+        "num_thread": 4,
+        "gpu_memory_fraction": 0.9,
+        "flash_attention": true,
+        "f16_kv": true,
+        "low_vram": false,
+        "gpu_layers": {
+            "qwen2.5-coder:32b": 28,
+            "dolphin-llama3": 28,
+            "llama3.1:8b": 28,
+            "mistral:7b": 28,
+            "llama3.2:3b": 28,
+            "default": 28
+        }
+    },
+    "model_configuration": {
+        "default_model": "llama3.1:8b",
+        "default_context": 4096,
+        "default_temperature": 0.7,
+        "default_top_p": 0.9,
+        "default_top_k": 40,
+        "models": {
+            "llama3.1:8b": {
+                "priority": 1,
+                "context": 131072,
+                "gpu_layers": 28,
+                "temperature": 0.7,
+                "purpose": "primary_sole_model",
+                "personality": "kimi",
+                "active": true,
+                "sole_model": true
+            },
+            "qwen2.5-coder:32b": {
+                "priority": 2,
+                "context": 4096,
+                "gpu_layers": 28,
+                "temperature": 0.7,
+                "purpose": "code_generation",
+                "personality": "sherlock_tony",
+                "active": false
+            },
+            "mistral:7b": {
+                "priority": 3,
+                "context": 2048,
+                "gpu_layers": 28,
+                "temperature": 0.7,
+                "purpose": "general",
+                "personality": "claude"
+            },
+            "llama3.2:3b": {
+                "priority": 4,
+                "context": 1024,
+                "gpu_layers": 28,
+                "temperature": 0.7,
+                "purpose": "fast_responses",
+                "personality": "gemini"
+            }
+        }
+    },
+    "performance": {
+        "max_concurrent_requests": 3,
+        "request_timeout": 180,
+        "connection_pool_size": 5,
+        "retry_attempts": 3,
+        "retry_delay": 2
+    },
+    "paths": {
+        "central_repository": "E:\\AI_Tools\\Central_Repository",
+        "ollama_system": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM",
+        "models_directory": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM\\models",
+        "logs_directory": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM\\logs",
+        "config_directory": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM\\config",
+        "ollama_executable": "C:\\Users\\Hectojr\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+        "ollama_data": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM",
+        "ollama_models": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM\\models"
+    },
+    "integration": {
+        "think_tank": {
+            "enabled": true,
+            "models": [
+                "llama3.1:8b"
+            ]
+        },
+        "code_team": {
+            "enabled": true,
+            "models": [
+                "llama3.1:8b"
+            ]
+        },
+        "orchestrator": {
+            "enabled": true,
+            "router": {
+                "model": "llama3.1:8b",
+                "threads": 4,
+                "temperature": 0.3
+            },
+            "team": {
+                "models": [
+                    {
+                        "name": "llama3.1:8b",
+                        "threads": 4,
+                        "purpose": "primary_sole_model"
+                    }
+                ]
+            },
+            "judge": {
+                "model": "llama3.1:8b",
+                "threads": 4,
+                "temperature": 0.5
+            },
+            "send_feedback": true
+        }
+    },
+    "monitoring": {
+        "health_check_interval": 30,
+        "log_level": "INFO",
+        "log_file": "E:\\AI_Tools\\Central_Repository\\OLLAMA_SYSTEM\\logs\\ollama_system.log",
+        "enable_metrics": true
+    }
+}
